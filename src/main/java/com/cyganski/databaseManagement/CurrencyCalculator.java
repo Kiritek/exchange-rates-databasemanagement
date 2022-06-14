@@ -1,5 +1,6 @@
 package com.cyganski.databaseManagement;
 
+import com.cyganski.databaseManagement.Enteties.CurrencyPair;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,11 +11,11 @@ public class CurrencyCalculator {
 
     public List<CurrencyPair> calculateCurrencies(List<CurrencyPair> currenciesToCalculate) {
         List<CurrencyPair> halfCalculatedList = CalculateOtherCurrencies(currenciesToCalculate);
-        List<CurrencyPair> finalCurrencyList = AddBaseCurrencies(halfCalculatedList,currenciesToCalculate);
-        return finalCurrencyList;
+        return AddBaseCurrencies(halfCalculatedList,currenciesToCalculate);
     }
+
     private List<CurrencyPair> CalculateOtherCurrencies(List<CurrencyPair> currenciesToCalculate){
-        List<CurrencyPair> calculatedList = new ArrayList<CurrencyPair>();
+        List<CurrencyPair> calculatedList = new ArrayList<>();
         double currentCurrencyRate;
         for (int i = 0; i < (long) currenciesToCalculate.size(); i++) {
 
@@ -25,8 +26,9 @@ public class CurrencyCalculator {
                             new CurrencyPair(
                                     currenciesToCalculate.get(i).getFirstCurrency(),
                                     currenciesToCalculate.get(j).getFirstCurrency(),
-                                    currenciesToCalculate.get(j).getDate(),
-                                    currentCurrencyRate));
+                                    currentCurrencyRate,
+                                    currenciesToCalculate.get(j).getDate()
+                                    ));
                 }
             }
         }
@@ -40,8 +42,9 @@ public class CurrencyCalculator {
                     new CurrencyPair(
                     baseList.get(i).getSecondCurrency(),
                     baseList.get(i).getFirstCurrency(),
-                    baseList.get(i).getDate(),
-                            (double)1/baseList.get(i).getExchangeRate()));
+                            (double)1/baseList.get(i).getExchangeRate(),
+                    baseList.get(i).getDate()
+            ));
         }
         return calculatedList;
     }
