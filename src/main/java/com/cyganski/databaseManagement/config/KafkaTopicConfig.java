@@ -13,6 +13,8 @@ public class KafkaTopicConfig {
         return TopicBuilder.name("exchangeRates").build();
     }
 
-    @Bean
-    public NewTopic exchangeRequests(){return TopicBuilder.name("exchangeRequests").build();}
+    public NewTopic exchangeRatesRequests(){
+        return TopicBuilder.name("exchangeRatesRequests").build();
+    }
+
 }

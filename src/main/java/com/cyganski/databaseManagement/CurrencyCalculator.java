@@ -16,9 +16,9 @@ public class CurrencyCalculator {
 
     private List<CurrencyPair> CalculateOtherCurrencies(List<CurrencyPair> currenciesToCalculate){
         List<CurrencyPair> calculatedList = new ArrayList<>();
+
         double currentCurrencyRate;
         for (int i = 0; i < (long) currenciesToCalculate.size(); i++) {
-
             for (int j = 0; j < (long) currenciesToCalculate.size(); j++) {
                 if (i != j) {
                     currentCurrencyRate = ((1 / currenciesToCalculate.get(j).getExchangeRate())/(1 / currenciesToCalculate.get(i).getExchangeRate()));

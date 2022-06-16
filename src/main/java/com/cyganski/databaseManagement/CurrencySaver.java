@@ -8,33 +8,30 @@ import java.util.*;
 
 @Service
 public class CurrencySaver {
-    List<String> collectedData = new ArrayList<>();
+
     CurrencyDeserializer currencyDeserializer;
     CurrencyCalculator currencyCalculator;
     CurrencyPairRepository currencyPairRepository;
+    RequestSender requestSender;
 
-    public CurrencySaver(CurrencyDeserializer currencyDeserializer, CurrencyCalculator currencyCalculator, CurrencyPairRepository currencyPairRepository) {
+    public CurrencySaver(CurrencyDeserializer currencyDeserializer, CurrencyCalculator currencyCalculator, CurrencyPairRepository currencyPairRepository, RequestSender requestSender) {
         this.currencyDeserializer = currencyDeserializer;
         this.currencyCalculator = currencyCalculator;
         this.currencyPairRepository = currencyPairRepository;
+        this.requestSender = requestSender;
     }
 
-    public void saveCurrencyToDb() {
+    public void saveCurrencyToDb(List<String> collectedData) {
 
         List<CurrencyPair> currencyPairs = currencyDeserializer.convertCurrency(collectedData);
         List<CurrencyPair> allPairs = currencyCalculator.calculateCurrencies(currencyPairs);
         currencyPairRepository.saveAll(allPairs);
-
-    }
-
-    public void collectData(String data) {
-
-        if (!data.equals("EndOfTransmission")) {
-            collectedData.add(data);
-        } else {
-            saveCurrencyToDb();
-            collectedData.clear();
+        ;
+        if(currencyPairRepository.findAll().size()==1056){
+         requestSender.requestHistoricalData();
         }
 
     }
+
+
 }

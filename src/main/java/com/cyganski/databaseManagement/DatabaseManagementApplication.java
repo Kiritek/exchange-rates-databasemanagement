@@ -8,6 +8,7 @@ public class DatabaseManagementApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DatabaseManagementApplication.class, args);
+
 	}
 
 }
