@@ -1,4 +1,4 @@
-package com.cyganski.databaseManagement.Enteties;
+package com.cyganski.databaseManagement.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;

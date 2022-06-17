@@ -1,6 +1,6 @@
 package com.cyganski.databaseManagement;
 
-import com.cyganski.databaseManagement.Enteties.CurrencyPair;
+import com.cyganski.databaseManagement.entities.CurrencyPair;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

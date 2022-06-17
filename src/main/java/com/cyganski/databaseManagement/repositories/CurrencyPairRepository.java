@@ -1,10 +1,7 @@
 package com.cyganski.databaseManagement.repositories;
 
-import com.cyganski.databaseManagement.Enteties.CurrencyPair;
+import com.cyganski.databaseManagement.entities.CurrencyPair;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
-import java.util.List;
 
 public interface CurrencyPairRepository extends JpaRepository<CurrencyPair,Long> {
 
