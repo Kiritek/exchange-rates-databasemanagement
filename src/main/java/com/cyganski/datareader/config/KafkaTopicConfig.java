@@ -1,4 +1,4 @@
-package com.cyganski.databaseManagement.Config;
+package com.cyganski.datareader.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
@@ -12,9 +12,4 @@ public class KafkaTopicConfig {
     public NewTopic exchangeRates(){
         return TopicBuilder.name("exchangeRates").build();
     }
-
-    public NewTopic exchangeRatesRequests(){
-        return TopicBuilder.name("exchangeRatesRequests").build();
-    }
-
 }
