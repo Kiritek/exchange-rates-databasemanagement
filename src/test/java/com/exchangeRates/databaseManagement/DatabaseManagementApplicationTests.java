@@ -1,10 +1,10 @@
-package com.cyganski.datareader;
+package com.exchangeRates.databaseManagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DataReaderApplicationTests {
+class DatabaseManagementApplicationTests {
 
 	@Test
 	void contextLoads() {

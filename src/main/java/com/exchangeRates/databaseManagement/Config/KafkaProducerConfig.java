@@ -1,4 +1,4 @@
-package com.cyganski.datareader.config;
+package com.exchangeRates.databaseManagement.Config;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -9,7 +9,6 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
-import java.util.Currency;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,13 +27,13 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, Currency> producerFactory(){
+    public ProducerFactory<String, String> producerFactory(){
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, Currency> kafkaTemplate(
-            ProducerFactory<String, Currency> producerFactory){
+    public KafkaTemplate<String, String> kafkaTemplate(
+            ProducerFactory<String, String> producerFactory){
         return new KafkaTemplate<>(producerFactory);
     }
 
